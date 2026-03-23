@@ -1,4 +1,4 @@
-python -u "/Users/akurathi/Desktop/Codes/projects/keyboard-config/files/keyboard_ga.py"
+python keyboard_ga.py
 [Corpus] Reading carpalx-master/corpus/java.txt … 1,467,254 chars → 861 bigrams, 6,861 trigrams
 
 ──────────────────────────────────────────────────
