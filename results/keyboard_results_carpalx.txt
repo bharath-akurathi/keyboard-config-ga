@@ -1,0 +1,18 @@
+CARPALX-POWERED KEYBOARD OPTIMIZER — RESULTS
+==================================================
+
+Top Row : Q  X  ,  V  '  ;  Y  M  J  Z
+Home Row: K  G  O  H  L  F  I  N  C  P
+Bot Row : .  D  A  S  R  U  E  T  W  B
+
+Flat array:
+['q', 'x', ',', 'v', "'", ';', 'y', 'm', 'j', 'z', 'k', 'g', 'o', 'h', 'l', 'f', 'i', 'n', 'c', 'p', '.', 'd', 'a', 's', 'r', 'u', 'e', 't', 'w', 'b']
+
+QWERTY effort score   : 3521.37
+Optimized effort score: 1863.14
+Reduction             : 47.1%
+
+Cost per 100 generations:
+  Gen     0: 2849.04
+  Gen   100: 1891.49
+  Gen   200: 1864.60

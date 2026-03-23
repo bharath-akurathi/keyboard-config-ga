@@ -1,0 +1,14 @@
+ERGONOMIC KEYBOARD OPTIMIZER — RESULTS
+============================================
+
+Optimized Layout (flat array):
+['x', 'v', 'd', 'y', 'g', 'l', 'm', 'u', 'j', "'", '.', 'c', 'h', 'e', 'i', 't', 'n', 'o', 'f', 'k', ';', 'b', 'w', 'p', 'a', 's', 'r', 'z', ',', 'q']
+
+Top Row : X  V  D  Y  G  L  M  U  J  '
+Home Row: .  C  H  E  I  T  N  O  F  K
+Bot Row : ;  B  W  P  A  S  R  Z  ,  Q
+
+Cost history per 100 generations:
+  Gen     0: 731.11
+  Gen   100: 565.69
+  Gen   200: 550.43

@@ -1,0 +1,51 @@
+# Carpalx downloads and extracted data (re-downloadable)
+/carpalx.zip
+/carpalx-master/
+carpalx.zip
+carpalx-master/
+
+# macOS and IDE artifacts
+.DS_Store
+._*
+*.swp
+*.swo
+
+/Application_of_a_genetic_algorithm_to_the_keyboard.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# OS
+Thumbs.db
+desktop.ini
+
