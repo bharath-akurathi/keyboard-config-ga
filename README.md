@@ -1,6 +1,6 @@
 # ⌨️ Keyboard Configuration using Genetic Algorithm
 
-> Evolving an ergonomic keyboard layout that reduces typing effort by **47.1%** compared to QWERTY — powered by the Carpalx biomechanical model and real literary corpus data.
+> Evolving an ergonomic keyboard layout that reduces typing effort by **49.4%** (English) and **49.6%** (Java) compared to QWERTY — powered by the Carpalx biomechanical model and real corpus data.
 
 ---
 
@@ -8,31 +8,53 @@
 
 The standard **QWERTY keyboard** was designed in 1873 for mechanical typewriters — not for human hands. It forces excessive finger travel, overloads weak pinky and ring fingers, and contributes to Repetitive Strain Injuries (RSI) such as Carpal Tunnel Syndrome and Tendonitis.
 
-This project uses a **Genetic Algorithm (GA)** to discover a keyboard layout that minimizes biomechanical typing effort. The fitness function is grounded in the authentic **Carpalx effort model** — calibrated using real constants from published research — and trained on **2,373,664 characters** of classic English literature.
+This project uses a **Genetic Algorithm (GA)** to discover a keyboard layout that minimizes biomechanical typing effort. The fitness function is grounded in the authentic **Carpalx effort model** — calibrated using real constants from published research — and trained on real corpus data for two use cases: English prose and Java code.
 
 ---
 
 ## 📊 Results
 
+### English Prose (books_short.txt — 2,373,664 characters)
+
 | Metric | QWERTY | GA Optimized |
 |--------|--------|--------------|
-| Carpalx effort score | 3,521.4 | 1,863.1 |
-| **Effort reduction** | — | **47.1%** |
-| Finger travel | High | Significantly reduced |
-| Home row usage | Low | High |
-| Pinky / ring load | Heavy | Minimized |
-| Same-finger bigrams | Common | Avoided |
-| Hand balance | Uneven | ~50 / 50 |
+| Carpalx effort score | 3,521.37 | 1,781.59 |
+| **Effort reduction** | — | **49.4%** |
+| Bigrams extracted | — | 806 |
+| Trigrams used | — | 6,978 |
+| Time to converge | — | ~1,071s (1000 gen) |
 
-### Optimized Layout (300 generations)
+### Optimized Layout — English
 
 ```
-TOP : Q   X   ,   V   '   ;   Y   M   J   Z
-HOME: K   G   O   H   L   F   I   N   C   P
-BOT : .   D   A   S   R   U   E   T   W   B
+TOP : Q   J   G   F   V   ;   '   K   X   Z
+HOME: B   C   L   N   M   I   A   D   Y   .
+BOT : P   W   T   S   R   O   E   H   U   ,
 ```
 
-Vowels **O** and **I** alongside high-frequency consonants **H, L, F, N** all land on the home row — exactly what ergonomics research recommends.
+Vowels **I** and **A** on the home row alongside high-frequency consonants **L, N, M** — with common letters T, S, R, O, E, H accessible on the bottom row.
+
+---
+
+### Java Code (java.txt — 1,467,254 characters)
+
+| Metric | QWERTY | GA Optimized |
+|--------|--------|--------------|
+| Carpalx effort score | 3,745.99 | 1,886.61 |
+| **Effort reduction** | — | **49.6%** |
+| Bigrams extracted | — | 861 |
+| Trigrams used | — | 6,861 |
+| Time to converge | — | ~1,128s (1000 gen) |
+
+### Optimized Layout — Java
+
+```
+TOP : '   Q   J   B   X   ,   K   M   W   Z
+HOME: Y   G   I   N   P   U   A   L   ;   V
+BOT : H   D   E   R   C   O   S   T   .   F
+```
+
+Vowels **I, U, A** all on the home row. The semicolon `;` pulled to home row (terminates every Java statement). Common Java keywords use E, R, C, S, T — all on the bottom row.
 
 ---
 
@@ -110,6 +132,8 @@ Trained on **14 classic English novels** (~2.97 MB) from the [Carpalx project](h
 
 After processing: **2,373,664 characters → 806 bigrams → 6,978 trigrams**
 
+Java corpus: **1,467,254 characters → 861 bigrams → 6,861 trigrams**
+
 ---
 
 ## 🗂️ Project Structure
@@ -123,20 +147,20 @@ keyboard-config-ga/
 ├── results/
 │   ├── keyboard_ga.py             # Main Python GA implementation
 │   ├── generated_data_ga.py       # Alternate/simplified GA
-│   ├── corpus/                    # From Carpalx 
-│   │   ├── books_short.txt        # Collection of English Text
-│   │   └── java.txt               # Collection of java code
+│   ├── corpus/                    # From Carpalx
+│   │   ├── books_short.txt        # Collection of English text
+│   │   └── java.txt               # Collection of Java code
 │   ├── keyboard_results_carpalx.txt
 │   ├── keyboard_results.txt
-│   ├── keyboard_for_books.txt
-│   ├── keyboard_for_java.txt
+│   ├── keyboard_for_books.txt     # Full output — English run
+│   ├── keyboard_for_java.txt      # Full output — Java run
 │   ├── assignment_keyboard_ga*.docx
 │   └── keyboard_ga_presentation.pptx
 ├── .gitignore
 └── README.md
 ```
 
-Note: `.gitignore` excludes `carpalx.zip`, `carpalx-master/`, and `Application_of_a_genetic_algorithm_to_the_keyboard.pdf` from new tracking. If these are already tracked in your clone, they still appear in your working tree.
+> `.gitignore` excludes `carpalx.zip`, `carpalx-master/`, and `Application_of_a_genetic_algorithm_to_the_keyboard.pdf` from tracking.
 
 ---
 
@@ -149,58 +173,57 @@ git clone https://github.com/bharath-akurathi/keyboard-config-ga.git
 cd keyboard-config-ga
 ```
 
-### 2. Install dependencies
+### 2. Check Python version
 
 ```bash
 python --version
 ```
 
-> Python 3.8+ required. No third-party packages are needed for the Python GA scripts.
+> Python 3.8+ required. No third-party packages needed — only `random`, `math`, `collections`, `time` from the standard library.
 
 ### 3. Verify corpus files
 
-This repository already includes corpus files in:
-
 ```bash
-results/corpus/books_short.txt
-results/corpus/java.txt
-# full upstream corpus is under carpalx-master/corpus/
+results/corpus/books_short.txt   # English prose corpus
+results/corpus/java.txt          # Java code corpus
 ```
-
-You can also point to your own `.txt` file by changing `CORPUS_PATH`.
 
 ### 4. Run the optimizer
 
 ```bash
-# Optimize for English prose (books corpus)
+# Optimize for English prose
 python results/keyboard_ga.py
-
-# Run alternate implementation
-python results/generated_data_ga.py
 
 # To optimize for Java code, change CORPUS_PATH in the script:
 # CORPUS_PATH = "results/corpus/java.txt"
+
+# Run alternate simplified implementation
+python results/generated_data_ga.py
 ```
 
 ### 5. Expected output
 
 ```
-[Corpus] Reading results/corpus/books_short.txt ...
+[Corpus] Reading results/corpus/books_short.txt … 2,373,664 chars → 806 bigrams, 6,978 trigrams
 
 ==============================================================
   Carpalx GA  |  pop=200  gen=1000
 ==============================================================
-  Gen     0 | Cost:    2849.04 | Elapsed:   0.0s
-  Gen   100 | Cost:    1981.22 | Elapsed:  85.3s
-  Gen   200 | Cost:    1901.45 | Elapsed: 170.1s
+  Gen     0 | Cost:    2574.76 | Elapsed:   1.1s
+  Gen   100 | Cost:    1854.29 | Elapsed:  98.9s
+  Gen   200 | Cost:    1808.35 | Elapsed: 212.7s
+  Gen   300 | Cost:    1796.89 | Elapsed: 332.2s
+  Gen   400 | Cost:    1794.06 | Elapsed: 446.8s
+  Gen   500 | Cost:    1781.59 | Elapsed: 559.9s
   ...
+  Gen   999 | Cost:    1781.59 | Elapsed: 1071.0s
 
 Optimized Layout:
-TOP : Q   X   ,   V   '   ;   Y   M   J   Z
-HOME: K   G   O   H   L   F   I   N   C   P
-BOT : .   D   A   S   R   U   E   T   W   B
+TOP : Q   J   G   F   V   ;   '   K   X   Z
+HOME: B   C   L   N   M   I   A   D   Y   .
+BOT : P   W   T   S   R   O   E   H   U   ,
 
-QWERTY: 3521.4  |  Optimized: 1863.1  |  Reduction: 47.1%
+QWERTY: 3521.37  |  Optimized: 1781.59  |  Reduction: 49.4%
 ```
 
 ---
@@ -222,15 +245,30 @@ TOURNAMENT_SIZE = 5                  # candidates per selection round
 
 ## 📈 Cost Over Generations
 
+### English corpus
+
 ```
-Gen    0  →  2849.04   (random start)
-Gen  100  →  1981.22   (fast early gains)
-Gen  200  →  1901.45
-Gen  300  →  1863.14   (47.1% below QWERTY)
-Gen  400  →  1851.77
-...
-Gen 1000  →  ~1820     (further improvement with full run)
+Gen    0  →  2574.76   (random start)
+Gen  100  →  1854.29   (fast early improvement)
+Gen  200  →  1808.35
+Gen  300  →  1796.89
+Gen  400  →  1794.06
+Gen  500  →  1781.59   (converged — 49.4% below QWERTY)
+Gen 1000  →  1781.59   (held steady)
 ```
+
+### Java corpus
+
+```
+Gen    0  →  2609.25   (random start)
+Gen  100  →  1953.64   (fast early improvement)
+Gen  200  →  1911.04
+Gen  300  →  1889.10
+Gen  400  →  1886.61   (converged — 49.6% below QWERTY)
+Gen 1000  →  1886.61   (held steady)
+```
+
+> Both runs converged around generation 400–500 and held steady — a healthy sign the GA found a strong local optimum.
 
 ---
 
@@ -243,7 +281,7 @@ Typing-related conditions affect millions of keyboard users:
 - **Osteoarthritis aggravation** — keypress micro-impacts worsen joint cartilage
 - **Trigger Finger** — narrowed tendon sheath causes finger to lock
 
-A layout that reduces effort by 47.1% means significantly fewer micro-strain events per day — across millions of keystrokes per year, this makes a meaningful ergonomic difference.
+A layout that reduces effort by ~49% means significantly fewer micro-strain events per day — across millions of keystrokes per year, this makes a meaningful ergonomic difference.
 
 ---
 
@@ -269,11 +307,11 @@ A layout that reduces effort by 47.1% means significantly fewer micro-strain eve
 
 This project (code, assignment, and presentation) is released under the **MIT License** — free to use, modify, and distribute with attribution.
 
-The Carpalx corpus (books) consists of public domain texts from [Project Gutenberg](https://www.gutenberg.org/).  
+The Carpalx corpus (books) consists of public domain texts from [Project Gutenberg](https://www.gutenberg.org/).
 The Carpalx configuration files are the work of Martin Krzywinski. A local copy may be present in this working tree, but `.gitignore` is configured to exclude Carpalx archive/folder paths from new tracking.
 
 ---
 
 <div align="center">
-  <sub>Built as part of an Machine Learning assignment on Bio-Inspired Computing</sub>
+  <sub>Built as part of a Machine Learning assignment on Bio-Inspired Computing</sub>
 </div>
