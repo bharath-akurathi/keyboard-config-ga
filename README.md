@@ -140,21 +140,21 @@ Java corpus: **1,467,254 characters → 861 bigrams → 6,861 trigrams**
 
 ```
 keyboard-config-ga/
-├── Application_of_a_genetic_algorithm_to_the_keyboard.pdf (currently ignored by .gitignore)
-├── carpalx-master/                    # Local Carpalx copy (currently ignored by .gitignore)
-├── carpalx.zip                        # Carpalx archive (currently ignored by .gitignore)
-├── results/
-│   ├── keyboard_ga.py             # Main Python GA implementation
-│   ├── generated_data_ga.py       # Alternate/simplified GA
-│   ├── corpus/                    # From Carpalx
-│   │   ├── books_short.txt        # Collection of English text
-│   │   └── java.txt               # Collection of Java code
-│   ├── keyboard_results_carpalx.txt
-│   ├── keyboard_results.txt
-│   ├── keyboard_for_books.txt     # Full output — English run
-│   ├── keyboard_for_java.txt      # Full output — Java run
-│   ├── assignment_keyboard_ga*.docx
-│   └── keyboard_ga_presentation.pptx
+├── keyboard_ga.py                            # Main optimizer (Carpalx model + real corpus)
+├── corpus/
+│   ├── books_short.txt                       # English corpus
+│   └── java.txt                              # Java corpus
+├── outputs/
+│   ├── keyboard_for_books.txt                # Full output — English run
+│   └── keyboard_for_java.txt                 # Full output — Java run
+│   ├── keyboard_results_carpalx.txt          # Output — optimized layout + cost history
+├── assignment/
+│   ├── assignment_keyboard_ga_final.docx     # Assignment write-up
+│   └── keyboard_ga_presentation.pptx         # 12-slide presentation
+├── carpalx-master/                           # Carpalx configs, corpora, and tools
+├── carpalx.zip                               # Carpalx archive
+├── Application_of_a_genetic_algorithm_to_the_keyboard.pdf
+├── LICENSE
 ├── .gitignore
 └── README.md
 ```
