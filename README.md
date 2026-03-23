@@ -141,7 +141,6 @@ Java corpus: **1,467,254 characters → 861 bigrams → 6,861 trigrams**
 ```
 keyboard-config-ga/
 ├── Application_of_a_genetic_algorithm_to_the_keyboard.pdf (currently ignored by .gitignore)
-├── keyboard_results_carpalx.txt
 ├── carpalx-master/                    # Local Carpalx copy (currently ignored by .gitignore)
 ├── carpalx.zip                        # Carpalx archive (currently ignored by .gitignore)
 ├── results/
